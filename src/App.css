@@ -1,6 +1,7 @@
 .app {
   background-color: #161616;
   height: 100vh;
+  width: 100vw;
   overflow: hidden;
 }
 
@@ -36,7 +37,7 @@ h1 {
 }
 
 .click:hover {
-  transform: scale(2);
+  transform: scale(1.1);
 }
 
 .click:active {
@@ -95,6 +96,23 @@ nav {
   font-weight: 700;
 }
 
+.logo {
+  position: relative;
+  border-radius: 999px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.logo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: radial-gradient(transparent 0%, transparent 50%, #161616 75%);
+}
+
 /* 
 
   Home
@@ -115,6 +133,64 @@ header {
   font-size: 24px;
   line-height: 2;
   max-width: 450px;
+}
+
+/* 
+
+    SHAPES
+
+    shapes on the first row
+    height = 15vh
+
+    shapes on the second row
+    height = 50vh
+
+    shapes on the third row
+    height = 80vh
+
+    shapes on the first column
+    width = 5vw
+
+    shapes on the second column
+    width = 50vw
+
+    shapes on the third column
+    width = 80vw
+
+*/
+
+.shape {
+  position: fixed;
+}
+
+.shape--0 {
+  top: 17vh;
+  left: 10vw;
+}
+
+.shape--1 {
+  top: 13vh;
+  left: 50vw;
+}
+
+.shape--2 {
+  top: 30vh;
+  left: 85vw;
+}
+
+.shape--3 {
+  top: 80vh;
+  left: 25vw;
+}
+
+.shape--4 {
+  top: 70vh;
+  left: 50vw;
+}
+
+.shape--5 {
+  top: 70vh;
+  left: 90vw;
 }
 
 /* 
@@ -141,6 +217,7 @@ header {
 .films__row {
   overflow: scroll;
   height: 100%;
+  padding: 0 24px;
 }
 
 /* Hide Scrollbars */
@@ -153,19 +230,55 @@ header {
 }
 
 .browser__header {
-  background-color: #221f1f;
+  background-color: #666;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   padding: 10px 24px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 24px;
+  border: 2px solid black;
   
   position: sticky;
   top: 0;
   z-index: 1;
-  border-radius: 8px;
+  border-radius: 0 0 8px 8px;
+}
+
+.film__search--container {
+  display: flex;
+  justify-content: space-between;
+  background-color: whitesmoke;
+  padding: 4px 16px;
+  border: 3px solid black;
+  border-radius: 999px;
+  width: 400px;
+}
+
+.film__search--input {
+  border: none;
+  background-color: inherit;
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.film__search--input:focus {
+  outline: none;
+}
+
+.film__search--button {
+  width: 60px;
+  border-radius: 999px;
+  border: none;
+}
+
+#filter {
+  border-radius: 99px;
+  padding: 6px 16px;
 }
 
 .films {
@@ -181,6 +294,7 @@ header {
   align-items: center;
   justify-content: flex-end;
   transition: all 300ms ease;
+  overflow: hidden;
 }
 
 .film:hover {
@@ -194,6 +308,7 @@ header {
   object-position: left;
   overflow: hidden;
 }
+
 
 .film__image--wrapper {
   height: 450px;
@@ -210,13 +325,20 @@ header {
   transform: scale(1.15);
 }
 
+.film__description--wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 130px;
+}
+
 .film__title {
   display: block;
   font-size: 20px;
   margin-bottom: 8px;
   color: #fff;
   width: 100%;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   text-overflow: ellipsis;
   overflow: hidden;
   text-align: center;
@@ -234,4 +356,327 @@ header {
 
 .film__type {
   color: #888888;
+}
+
+/* film skeleton */
+
+.film-skeleton {
+  background-color: gray;
+  width: calc(25% - 20px);
+  margin: 10px;
+}
+
+.film__image-skeleton,
+.film__title-skeleton,
+.film__ratings-skeleton,
+.film__type-skeleton {
+  background-color: lightgray;
+}
+
+.film__image-skeleton {
+  margin: 10px;
+}
+
+.film__title-skeleton {
+  height: 20px;
+  width: 120px;
+}
+
+.film__ratings-skeleton {
+  height: 18px;
+  width: 50px;
+}
+
+.film__type-skeleton {
+  height: 14px;
+  width: 80px;
+}
+
+/* 
+
+  Film Info Page
+
+*/
+
+.infoPage {
+  height: 100vh;
+  width: 100vw;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.container__top {
+  position: relative;
+  height: 100%;
+}
+
+.infoPage__container {
+  padding: 0 !important;
+}
+
+.cover__overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cover__overlay--top {
+  background-color: inherit;
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: 50% 40%;
+  border-bottom: 2px solid gray;
+}
+
+.filmNameGenre__container {
+  position: absolute;
+  bottom: 15px;
+  left: 285px;
+}
+
+.filmName {
+  font-size: 30px;
+  color: #bbb;
+  font-weight: 400;
+  line-height: 1.4;
+  padding-bottom: 8px;
+}
+
+.type__genre {
+  line-height: 30px;
+  font-size: 13px;
+  margin-right: 40px;
+  display: inline-block;
+  white-space: nowrap;
+  color: #b9b9b9;
+  cursor: not-allowed;
+}
+
+.type__genre:hover {
+  color: #80FFDB;
+}
+
+.cover__overlay--bottom {
+  width: 100%;
+  padding: 0 12px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.cover__overlay--bottomLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 260px;
+  height: 480px;
+  padding: 15px;
+  z-index: 1;
+}
+
+.film__details {
+  padding: 10px;
+}
+
+.film__detailsElement {
+  padding: 6px 0;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.film__detailsElement--title {
+  font-size: 16px;
+  color: #666;
+}
+
+.film__detailsElement--value {
+  font-size: 20px;
+  color: #999;
+}
+
+.film__poster--wrapper {
+  height: 100%;
+}
+
+
+.film__poster {
+  width: 230px;
+}
+
+.cover__overlay--bottomRight {
+  width: 100%;
+  padding: 16px;
+}
+
+.film__description {
+  font-size: 16px;
+  color: #fff;
+}
+
+.watchlist__button--wrapper {
+  margin-top: 24px;
+}
+
+.watchlist__button {
+ background-color: #666 !important;
+ color: white !important;
+ font-weight: bold !important;
+}
+
+.watchlist__button:hover {
+  transform: scale(1.02);
+}
+
+.watchlist__button:active {
+  transform: scale(0.95);
+}
+
+/* 
+
+  WATCHLIST
+
+*/
+
+.watchlist__container {
+  height: calc(100vh - 100px);
+  overflow: scroll;
+  padding-bottom: 60px;
+}
+
+/* Hide Scrollbars */
+.watchlist__container::-webkit-scrollbar {
+  display: none;
+}
+.watchlist__container {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+
+.watchlist__header {
+  background-color: #666;
+  margin: 0 24px;
+  padding: 8px 16px;
+  color: white;
+  display: flex;
+}
+
+.watchlist__item {
+  margin: 24px;
+  display: flex;
+  padding-right: 8px;
+  background-color: whitesmoke;
+  transition: all 300ms ease;
+}
+
+.watchlist__item:hover {
+  background-color: lightgrey;
+}
+
+.watchlist__title {
+  margin-bottom: 16px;
+  margin-left: 24px;
+}
+
+.watchlist__film {
+  width: 100%;
+  display: flex;
+}
+
+.watchlist__rating {
+  width: 100%;
+  max-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 18px;
+}
+
+.watchlist__type {
+  width: 100%;
+  max-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 18px;
+}
+
+.watchlist__film--image {
+  width: 100%;
+  max-width: 90px;
+  max-height: 128px;
+}
+
+.watchlist__film--info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8px 16px;
+}
+
+.watchlist__film--title {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.watchlist__film--year {
+  margin-bottom: 16px;
+}
+
+.watchlist__function {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.watchlist__film--add,
+.watchlist__film--remove {
+  background-color: transparent;
+  border: none;
+  padding-left: 0;
+  width: 100%;
+}
+
+.watchlist__film--add {
+  color: green;
+}
+
+.watchlist__film--remove {
+  color: #cf0000;
+}
+
+.watchlist__film--add:hover,
+.watchlist__film--remove:hover {
+  text-decoration: underline;
+}
+
+/* 
+
+  EMPTY LIST DESIGN
+
+*/
+
+.empty__list {
+  height: 30%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  background-color: lightsteelblue;
+  border-radius: 40px;
+  padding: 16px;
+}
+
+.empty__list--image {
+  width: 100%;
+  height: 100%;
+}
+
+.empty__list--description {
+  font-size: 40px;
+  text-align: center;
+  font-weight: 600;
 }

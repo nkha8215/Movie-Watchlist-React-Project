@@ -31,10 +31,10 @@ const WatchlistItem = ({film}) => {
                             {film.year}
                         </div>
                         <div className="watchlist__function">
-                            <button className="watchlist__film--add" onClick={addWatched}>
-                                <span>&#10004; Add to Watched</span>
+                            <button className="watchlist__film--add click" onClick={addWatched}>
+                                <span  >&#10004; Add to Watched</span>
                             </button>
-                            <button className="watchlist__film--remove" onClick={removeWatchlist}>
+                            <button className="watchlist__film--remove click" onClick={removeWatchlist}>
                                 <span>&#10005; Remove</span>
                             </button>
                         </div>
